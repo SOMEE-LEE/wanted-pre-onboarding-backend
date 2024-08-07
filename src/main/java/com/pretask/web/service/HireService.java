@@ -1,0 +1,8 @@
+package com.pretask.web.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class HireService {
+
+}

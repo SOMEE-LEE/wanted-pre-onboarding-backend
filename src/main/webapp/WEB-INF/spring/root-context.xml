@@ -4,5 +4,20 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
+	<!-- DBCP로 DB에 연결 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+	destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://pretask.cr4m6yw6mfnv.ap-northeast-2.rds.amazonaws.com:3306/pretask?serverTimezone=UTC" />
+		<property name="username" value="somee" />
+		<property name="password" value="dc970307!" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/sqlmap/mybatis-config.xml" />
+	</bean>
+		
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
 </beans>

@@ -21,18 +21,18 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- 모든 서블릿과 필터가 공유하는 root 스프링 컨테이너 정의 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>/WEB-INF/spring/*context.xml</param-value>
 	</context-param>
 	
-	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<!-- 모든 서블릿과 필터가 공유하는 스프링 컨테이너 생성 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Processes application requests -->
+	<!-- application 요청 처리 -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
