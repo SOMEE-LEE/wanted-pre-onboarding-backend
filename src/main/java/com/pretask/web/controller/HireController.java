@@ -2,6 +2,7 @@ package com.pretask.web.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -30,7 +31,9 @@ public class HireController {
 	
 	// 채용공고 목록 페이지
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String home() {
+	public String home(Model model) {
+		List<Hire> list =  hireService.list();
+		model.addAttribute("list", list);
 		return "hire/hire_list";
 	}
 	
@@ -49,7 +52,7 @@ public class HireController {
 		System.out.println();
 		ModelAndView mav = new ModelAndView();
 		if(rs == 1) {
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirece:hire/hire_list");
 		}else {
 			mav.setViewName("redirect:create");
 		}

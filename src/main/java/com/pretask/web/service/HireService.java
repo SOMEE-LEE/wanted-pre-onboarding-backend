@@ -1,6 +1,7 @@
 package com.pretask.web.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class HireService {
 	    params.put("tool", hire.getTool());
 			
 	    return hireRepository.insert(hire);
+	}
+	
+	public List<Hire> list() {
+		return hireRepository.list();
 	}
 }

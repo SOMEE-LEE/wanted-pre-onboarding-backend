@@ -9,7 +9,7 @@ public class Hire {
 	public Hire() {
 		
 	}
-	public Hire (int companyId, int hireMoney, String content, String tool) {
+	public Hire (int companyId, String hireMoney, String content, String tool) {
 		this.companyId = companyId;
 		this.hireMoney = hireMoney;
 		this.content = content;
@@ -19,7 +19,7 @@ public class Hire {
 	private Integer idx;
 	private int companyId;
 	private String position;
-	private int hireMoney;
+	private String hireMoney;
 	private String content;
 	private String tool;
 }

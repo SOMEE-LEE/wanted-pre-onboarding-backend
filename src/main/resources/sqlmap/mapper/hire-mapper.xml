@@ -8,4 +8,9 @@
 			insert into hire(companyId, position, hireMoney, content, tool) values (#{companyId}, #{position}, #{hireMoney}, #{content}, #{tool})
 		]]>
 	</insert>
+	<select id="list" resultType="com.pretask.web.model.Hire">
+		select idx, companyId, position, hireMoney, content, tool 
+		from hire
+		order by idx desc
+	</select>
 </mapper>
