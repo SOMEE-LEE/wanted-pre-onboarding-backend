@@ -6,6 +6,16 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Hire {
+	public Hire() {
+		
+	}
+	public Hire (int companyId, int hireMoney, String content, String tool) {
+		this.companyId = companyId;
+		this.hireMoney = hireMoney;
+		this.content = content;
+		this.tool = tool;
+	}
+	
 	private Integer idx;
 	private int companyId;
 	private String position;
