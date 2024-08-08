@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,7 +55,7 @@ public class HireController {
 		System.out.println();
 		ModelAndView mav = new ModelAndView();
 		if(rs == 1) {
-			mav.setViewName("redirece:hire/hire_list");
+			mav.setViewName("redirect:hire/hire_list");
 		}else {
 			mav.setViewName("redirect:create");
 		}
@@ -68,4 +69,27 @@ public class HireController {
 		model.addAttribute("hire", hire);
 		return "hire/detail";
 	}
+	
+	// 채용공고 수정 페이지
+	@GetMapping("/hire_edit")
+	public String update(Model model, @RequestParam Integer idx) {
+		Hire hire =  hireService.getHireByIdx(idx);
+		model.addAttribute("hire", hire);
+		return "hire/update";
+	}
+	
+	// 채용공고 수정 처리
+	@PostMapping("/hire_edit")
+	public String update(Model model, Hire hire) {
+		System.out.println(hire);
+		int rs = hireService.editHire(hire);
+		
+		if(rs == 1) {
+			return "redirect:hire_detail?idx="+hire.getIdx();
+		}else {
+			return "redirect:hire_edit?idx="+hire.getIdx();
+		}
+		
+	}
+	
 }

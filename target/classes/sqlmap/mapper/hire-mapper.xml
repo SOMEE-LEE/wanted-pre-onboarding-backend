@@ -22,4 +22,10 @@
 			where idx = #{idx}
 		]]>
 	</select>
+	<update id="update" parameterType="com.pretask.web.model.Hire">
+		<![CDATA[
+			update hire set position=#{position}, hireMoney=#{hireMoney}, content=#{content}, tool=#{tool}
+			where idx=#{idx} 
+		]]>
+	</update>
 </mapper>

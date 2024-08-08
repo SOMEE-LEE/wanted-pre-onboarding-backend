@@ -8,7 +8,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>채용공고 목록 가져오기</title>
+	<title>채용공고 목록</title>
 </head>
 <body>
 <h1>

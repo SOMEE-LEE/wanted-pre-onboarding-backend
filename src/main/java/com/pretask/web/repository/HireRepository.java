@@ -29,4 +29,8 @@ public class HireRepository {
 	public Hire getHireByIdx(Integer idx) {
 		return sqlSession.selectOne("hire.detail", idx);
 	}
+
+	public int editHire(Hire hire) {
+		return sqlSession.update("hire.update",hire);
+	}
 }

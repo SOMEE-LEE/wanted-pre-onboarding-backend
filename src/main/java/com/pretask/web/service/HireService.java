@@ -34,4 +34,8 @@ public class HireService {
 		// TODO Auto-generated method stub
 		return hireRepository.getHireByIdx(idx);
 	}
+
+	public int editHire(Hire hire) {
+		return hireRepository.editHire(hire);
+	}
 }
