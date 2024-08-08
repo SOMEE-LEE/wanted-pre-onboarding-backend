@@ -28,12 +28,12 @@
 </tr>
 <%for(Hire hire : list) {%>
 <tr>
-<td><%=hire.getIdx() %></td>
+<td><a href="pretask/hire_detail?idx=<%= hire.getIdx() %>"><%=hire.getIdx() %></a></td>
 <td><%=hire.getCompanyId() %>회사명</td>
 <td>국가</td>
 <td>지역</td>
-<td><%=hire.getHireMoney() %></td>
 <td><%=hire.getPosition() %></td>
+<td><%=hire.getHireMoney() %></td>
 <td><%=hire.getTool() %></td>
 </tr>
 <%} %>

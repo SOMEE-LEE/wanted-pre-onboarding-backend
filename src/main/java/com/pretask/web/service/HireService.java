@@ -29,4 +29,9 @@ public class HireService {
 	public List<Hire> list() {
 		return hireRepository.list();
 	}
+
+	public Hire getHireByIdx(Integer idx) {
+		// TODO Auto-generated method stub
+		return hireRepository.getHireByIdx(idx);
+	}
 }

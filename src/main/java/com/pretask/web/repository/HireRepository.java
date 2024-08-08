@@ -25,4 +25,8 @@ public class HireRepository {
 	public List<Hire> list() {
 		return sqlSession.selectList("hire.list");
 	}
+
+	public Hire getHireByIdx(Integer idx) {
+		return sqlSession.selectOne("hire.detail", idx);
+	}
 }

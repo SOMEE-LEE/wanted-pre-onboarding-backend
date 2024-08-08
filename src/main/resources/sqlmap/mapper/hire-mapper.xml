@@ -9,8 +9,17 @@
 		]]>
 	</insert>
 	<select id="list" resultType="com.pretask.web.model.Hire">
-		select idx, companyId, position, hireMoney, content, tool 
-		from hire
-		order by idx desc
+		<![CDATA[
+			select idx, companyId, position, hireMoney, content, tool 
+			from hire
+			order by idx desc
+		]]>
+	</select>
+	<select id="detail" parameterType="Integer" resultType="com.pretask.web.model.Hire">
+		<![CDATA[
+			select idx, companyId, position, hireMoney, content, tool 
+			from hire
+			where idx = #{idx}
+		]]>
 	</select>
 </mapper>

@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +32,7 @@ public class HireController {
 	HireService hireService;
 	
 	// 채용공고 목록 페이지
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@GetMapping("")
 	public String home(Model model) {
 		List<Hire> list =  hireService.list();
 		model.addAttribute("list", list);
@@ -38,13 +40,13 @@ public class HireController {
 	}
 	
 	// 채용공고 등록 페이지
-	@RequestMapping(value = "/hire_add", method = RequestMethod.GET)
+	@GetMapping("/hire_add")
 	public ModelAndView create() {
 		return new ModelAndView("hire/create");
 	}
 	
-	// 채용공고 등록 
-	@RequestMapping(value = "/hire_add", method = RequestMethod.POST)
+	// 채용공고 등록 처리
+	@PostMapping("/hire_add")
 	public ModelAndView create(@RequestParam Map<String, String> map, Hire hire) {
 		System.out.println(map);
 		System.out.println(hire);
@@ -57,5 +59,13 @@ public class HireController {
 			mav.setViewName("redirect:create");
 		}
 		return mav; 
+	}
+	
+	// 채용공고 상세 페이지
+	@GetMapping("/hire_detail")
+	public String detail(Model model, @RequestParam Integer idx) {
+		Hire hire =  hireService.getHireByIdx(idx);
+		model.addAttribute("hire", hire);
+		return "hire/detail";
 	}
 }
