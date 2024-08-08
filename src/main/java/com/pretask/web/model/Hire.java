@@ -5,16 +5,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
+// 채용공고 데이터
 public class Hire {
-	public Hire() {
-		
-	}
-	public Hire (int companyId, String hireMoney, String content, String tool) {
-		this.companyId = companyId;
-		this.hireMoney = hireMoney;
-		this.content = content;
-		this.tool = tool;
-	}
+	public Hire() {}
 	
 	private Integer idx;
 	private int companyId;

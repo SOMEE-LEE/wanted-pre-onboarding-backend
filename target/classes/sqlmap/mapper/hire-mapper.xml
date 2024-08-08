@@ -3,11 +3,13 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hire">
+	<!-- 채용공고 등록 -->
 	<insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="idx">
 		<![CDATA[
 			insert into hire(companyId, position, hireMoney, content, tool) values (#{companyId}, #{position}, #{hireMoney}, #{content}, #{tool})
 		]]>
 	</insert>
+	<!-- 채용공고 목록 가져오기 -->
 	<select id="list" resultType="com.pretask.web.model.Hire">
 		<![CDATA[
 			select idx, companyId, position, hireMoney, content, tool 
@@ -15,6 +17,7 @@
 			order by idx desc
 		]]>
 	</select>
+	<!-- 채용공고 상세정보 가져오기 -->
 	<select id="detail" parameterType="Integer" resultType="com.pretask.web.model.Hire">
 		<![CDATA[
 			select idx, companyId, position, hireMoney, content, tool 
@@ -22,12 +25,14 @@
 			where idx = #{idx}
 		]]>
 	</select>
+	<!-- 채용공고 수정 -->
 	<update id="update" parameterType="com.pretask.web.model.Hire">
 		<![CDATA[
 			update hire set position=#{position}, hireMoney=#{hireMoney}, content=#{content}, tool=#{tool}
 			where idx=#{idx} 
 		]]>
 	</update>
+	<!-- 채용공고 삭제 -->
 	<delete id="delete" parameterType="com.pretask.web.model.Hire">
 		<![CDATA[
 			delete from hire where idx = #{idx} 

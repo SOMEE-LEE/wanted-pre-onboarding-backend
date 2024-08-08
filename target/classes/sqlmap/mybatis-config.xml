@@ -6,5 +6,6 @@
   
   <mappers>
     <mapper resource="sqlmap/mapper/hire-mapper.xml"/>
+    <mapper resource="sqlmap/mapper/company-mapper.xml"/>
   </mappers>
 </configuration>

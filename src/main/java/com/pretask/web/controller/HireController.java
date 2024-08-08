@@ -1,9 +1,6 @@
 package com.pretask.web.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -20,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pretask.web.model.Company;
 import com.pretask.web.model.Hire;
+import com.pretask.web.service.CompanyService;
 import com.pretask.web.service.HireService;
 
 /**
@@ -32,12 +31,15 @@ public class HireController {
 	
 	@Autowired
 	HireService hireService;
+	CompanyService companyService;
 	
 	// 채용공고 목록 페이지
 	@GetMapping("")
 	public String home(Model model) {
 		List<Hire> list =  hireService.list();
+		//List<Company> com = companyService.list();
 		model.addAttribute("list", list);
+		//model.addAttribute("com", com);
 		return "hire/hire_list";
 	}
 	
@@ -50,6 +52,7 @@ public class HireController {
 	// 채용공고 등록 처리
 	@PostMapping("/hire_add")
 	public ModelAndView create(@RequestParam Map<String, String> map, Hire hire) {
+		
 		int rs = hireService.insert(hire);
 		ModelAndView mav = new ModelAndView();
 		if(rs == 1) {
