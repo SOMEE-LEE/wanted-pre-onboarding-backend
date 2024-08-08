@@ -38,4 +38,8 @@ public class HireService {
 	public int editHire(Hire hire) {
 		return hireRepository.editHire(hire);
 	}
+
+	public int deleteHire(Hire hire) {
+		return hireRepository.deleteHire(hire);
+	}
 }

@@ -24,11 +24,10 @@
 	<td>채용포지션</td>
 	<td>채용보상금</td>
 	<td>사용기술</td>
-	<td>
 </tr>
 <%for(Hire hire : list) {%>
 <tr>
-<td><a href="pretask/hire_detail?idx=<%= hire.getIdx() %>"><%=hire.getIdx() %></a></td>
+<td><a href="/web/pretask/hire_detail?idx=<%= hire.getIdx() %>"><%=hire.getIdx() %></a></td>
 <td><%=hire.getCompanyId() %>회사명</td>
 <td>국가</td>
 <td>지역</td>
@@ -39,6 +38,6 @@
 <%} %>
 </table>
 <br>
-<a href="pretask/hire_add">채용공고 등록</a>
+<a href="/web/pretask/hire_add">채용공고 등록</a>
 </body>
 </html>

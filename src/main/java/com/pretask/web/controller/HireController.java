@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,13 +50,10 @@ public class HireController {
 	// 채용공고 등록 처리
 	@PostMapping("/hire_add")
 	public ModelAndView create(@RequestParam Map<String, String> map, Hire hire) {
-		System.out.println(map);
-		System.out.println(hire);
 		int rs = hireService.insert(hire);
-		System.out.println();
 		ModelAndView mav = new ModelAndView();
 		if(rs == 1) {
-			mav.setViewName("redirect:hire/hire_list");
+			mav.setViewName("redirect: /web/pretask/");
 		}else {
 			mav.setViewName("redirect:create");
 		}
@@ -81,15 +79,26 @@ public class HireController {
 	// 채용공고 수정 처리
 	@PostMapping("/hire_edit")
 	public String update(Model model, Hire hire) {
-		System.out.println(hire);
 		int rs = hireService.editHire(hire);
 		
 		if(rs == 1) {
 			return "redirect:hire_detail?idx="+hire.getIdx();
 		}else {
 			return "redirect:hire_edit?idx="+hire.getIdx();
-		}
+		}	
+	}
+	
+	// 채용공고 삭제 처리
+	@GetMapping("/hire_delete")
+	public String delete(Model model, Hire hire) {
+		int rs = hireService.deleteHire(hire);
 		
+		if(rs == 1) {
+			return "redirect: /web/pretask/";
+		}else {
+			System.out.println("삭제 실패");
+			return "redirect:hire_detail?idx="+hire.getIdx();
+		}
 	}
 	
 }

@@ -28,4 +28,9 @@
 			where idx=#{idx} 
 		]]>
 	</update>
+	<delete id="delete" parameterType="com.pretask.web.model.Hire">
+		<![CDATA[
+			delete from hire where idx = #{idx} 
+		]]>
+	</delete>
 </mapper>

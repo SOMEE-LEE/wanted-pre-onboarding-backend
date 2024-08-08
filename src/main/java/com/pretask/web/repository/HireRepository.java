@@ -33,4 +33,8 @@ public class HireRepository {
 	public int editHire(Hire hire) {
 		return sqlSession.update("hire.update",hire);
 	}
+
+	public int deleteHire(Hire hire) {
+		return sqlSession.delete("hire.delete", hire);
+	}
 }
